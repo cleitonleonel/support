@@ -1,4 +1,5 @@
 from distutils.core import setup
+from setuptools import find_packages
 from os import path
 this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
@@ -14,7 +15,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/cleitonleonel/support.git",
-    packages=["support", "support"],
+    packages=find_packages(),
     install_requires=[
         'pyngrok',
         'PyYAML'
