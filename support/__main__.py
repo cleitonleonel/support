@@ -1,5 +1,7 @@
 from __future__ import absolute_import
-from support.support import get_platform, resource_path, config, ShareDesktop, ngrok
+from support.support import get_platform, resource_path, config,\
+    ShareDesktop, ngrok
+
 
 if __name__ == '__main__':
     arch_path = '64bits'

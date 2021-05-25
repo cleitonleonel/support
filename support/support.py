@@ -14,12 +14,19 @@ from support.settings import USER_EMAIL, PASSWORD_EMAIL, SEND_TO
 config = conf
 
 if len(USER_EMAIL) == 0:
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.py'), 'w') as f:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.py'), 'w') as file_conf:
         USER_EMAIL = input('Digite o seu e-mail: ').lower()
         PASSWORD_EMAIL = input('Digite a senha do e-mail: ')
         SEND_TO = input('Digite o e-mail de destino: ').lower()
         text = f"USER_EMAIL = '{USER_EMAIL}'\nPASSWORD_EMAIL = '{PASSWORD_EMAIL}'\nSEND_TO = '{SEND_TO}'\n"
-        f.write(text)
+        file_conf.write(text)
+        path_token = os.path.join(os.path.expanduser("~/"), '.ngrok2/')
+        if not os.path.exists(path_token):
+            NGROK_TOKEN = input('Digite o token do ngrok: ')
+            os.makedirs(path_token)
+            with open(os.path.join(path_token, 'ngrok.yml'), 'w') as file_token:
+                file_token.write(f'authtoken: {NGROK_TOKEN}')
+
         os.system('cls' if os.name == 'nt' else 'clear')
 
 
