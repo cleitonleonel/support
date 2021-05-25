@@ -20,5 +20,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    package_dir={'support': 'support'},
+    packages=setuptools.find_packages(where="support"),
     python_requires=">=3.6",
 )
