@@ -1,0 +1,3 @@
+USER_EMAIL = ''
+PASSWORD_EMAIL = ''
+SEND_TO = ''

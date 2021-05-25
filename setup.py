@@ -13,7 +13,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/cleitonleonel/support.git",
-    packages=["."],
+    packages=["support"],
     install_requires=[
         'pyngrok',
         'PyYAML'
