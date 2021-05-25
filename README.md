@@ -17,6 +17,14 @@
   
     - Não será necessário o download do ngrok, isso será feito na primeira inicialização do módulo.
 
+**Configure o Gmail para permitir aplicativos de terceiro**
+
+O Gmail atualmente aplica diversas políticas para tentar evitar que um terceiro utilize a sua conta de email inclusive limitando o acesso de aplicativos diferentes do seu próprio webmail. Precisamos permitir o acesso de aplicativos de terceiros, denominado de “menos seguro” pelo Gmail, para poder conectar o nosso cliente de email ao smtp do Gmail.
+- Abra o web browser e entre no endereço: https://myaccount.google.com/lesssecureapps
+- Certifique-se de que está conectado com a conta do Gmail que irá utilizar para configurar o acesso. Caso esteja logado com uma conta diferente alterne para a conta a ser utilizada através do ícone correspondente à letra inicial da conta atual no canto superior direito.
+- Mova o botão para o lado direito para ativar a opção **Permitir aplicativos menos seguros**. O botão ficará com a tonalidade azul.
+
+
 **Instalando com pip:**
 
 ``
