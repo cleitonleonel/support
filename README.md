@@ -1,6 +1,6 @@
 # Support
 
-<img src="https://github.com/cleitonleonel/Ser2net/blob/master/img/support.ico?raw=true" alt="Your image title" width="250"/>
+<img src="https://github.com/cleitonleonel/support/blob/master/img/support.ico?raw=true" alt="Your image title" width="250"/>
 
 **Instalando com pip:**
 
