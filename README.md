@@ -12,7 +12,7 @@ pip3 install git+https://github.com/cleitonleonel/support.git
 - Suporte remoto simples com x11vnc + ngrok:
 
 ``
-python3 support.py
+python3 -m support.py
 ``
 
 # Desenvolvido por:
