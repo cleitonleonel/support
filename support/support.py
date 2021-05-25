@@ -9,7 +9,9 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from threading import Thread
 from pyngrok import ngrok, conf
-from settings import USER_EMAIL, PASSWORD_EMAIL, SEND_TO
+from support.settings import USER_EMAIL, PASSWORD_EMAIL, SEND_TO
+
+config = conf
 
 if len(USER_EMAIL) == 0:
     with open('settings.py', 'w') as f:
@@ -127,23 +129,8 @@ class ShareDesktop(object):
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
         server.login(email, password)
-        text = msg.as_string()
-        server.sendmail(email, send_to_email, text)
+        str_mail = msg.as_string()
+        server.sendmail(email, send_to_email, str_mail)
         server.quit()
         self.check_vnc()
         return self.ngrok_process()
-
-
-if __name__ == '__main__':
-    arch_path = '64bits'
-    if get_platform()[1] == 'armv7l':
-        arch_path = 'arm'
-    conf.DEFAULT_NGROK_PATH = resource_path(f"bin/{arch_path}/ngrok")
-    desktop = ShareDesktop()
-    try:
-        process = desktop.send_email()
-        process.proc.wait()
-    except KeyboardInterrupt:
-        print("Shutting down server.")
-        ngrok.kill()
-        desktop.kill_threads()
