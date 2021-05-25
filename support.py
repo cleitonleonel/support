@@ -19,11 +19,14 @@ def get_platform():
         'win32': 'Windows'
     }
     if sys.platform not in platforms:
-        return sys.platform
+        return sys.platform, platform.machine()
     elif platforms[sys.platform] == 'Linux' and platform.machine() == 'armv7l':
-        return 'Raspberry'
+        return 'Raspberry', platform.machine()
+    elif platforms[sys.platform] == 'Windows':
+        print('Desculpe sistema operacional não suportado...')
+        sys.exit(0)
 
-    return platforms[sys.platform]
+    return platforms[sys.platform], platform.machine()
 
 
 def resource_path(relative_path):
@@ -71,9 +74,9 @@ class ShareDesktop:
 
     @staticmethod
     def run_x11vnc():
-        if get_platform() == 'Raspberry':
+        if get_platform()[0] == 'Raspberry':
             os.system('sudo x11vnc -display :0 -auth /home/pi/.Xauthority -forever > /dev/null 2>&1 &')
-        elif get_platform() == 'Linux':
+        elif get_platform()[0] == 'Linux':
             os.system('x11vnc > /dev/null 2>&1 &')
 
     def is_port_in_use(self):
@@ -122,7 +125,10 @@ class ShareDesktop:
 
 
 if __name__ == '__main__':
-    conf.DEFAULT_NGROK_PATH = resource_path("bin/64bits/ngrok")
+    arch_path = '64bits'
+    if get_platform()[1] == 'armv7l':
+        arch_path = 'arm'
+    conf.DEFAULT_NGROK_PATH = resource_path(f"bin/{arch_path}/ngrok")
     desktop = ShareDesktop()
 
     try:
