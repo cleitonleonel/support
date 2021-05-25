@@ -14,7 +14,7 @@ from support.settings import USER_EMAIL, PASSWORD_EMAIL, SEND_TO
 config = conf
 
 if len(USER_EMAIL) == 0:
-    with open('settings.py', 'w') as f:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.py'), 'w') as f:
         USER_EMAIL = input('Digite o seu e-mail: ').lower()
         PASSWORD_EMAIL = input('Digite a senha do e-mail: ')
         SEND_TO = input('Digite o e-mail de destino: ').lower()
