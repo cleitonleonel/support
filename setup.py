@@ -7,12 +7,14 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
     name="support",
     version="0.0.1",
+    include_package_data=True,
     author="Cleiton Leonel Creton",
     author_email="cleiton.leonel@gmail.com",
     description="Simple share desktop with python",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/cleitonleonel/support.git",
+    packages=["support"],
     install_requires=[
         'pyngrok',
         'PyYAML'
