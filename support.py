@@ -11,6 +11,15 @@ from threading import Thread
 from pyngrok import ngrok, conf
 from settings import USER_EMAIL, PASSWORD_EMAIL, SEND_TO
 
+if len(USER_EMAIL) == 0:
+    with open('settings.py', 'w') as f:
+        USER_EMAIL = input('Digite o seu e-mail: ').lower()
+        PASSWORD_EMAIL = input('Digite a senha do e-mail: ')
+        SEND_TO = input('Digite o e-mail de destino: ').lower()
+        text = f"USER_EMAIL = '{USER_EMAIL}'\nPASSWORD_EMAIL = '{PASSWORD_EMAIL}'\nSEND_TO = '{SEND_TO}'\n"
+        f.write(text)
+        os.system('cls' if os.name == 'nt' else 'clear')
+
 
 def get_platform():
     platforms = {
@@ -34,7 +43,7 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
-class ShareDesktop:
+class ShareDesktop(object):
 
     def __init__(self, client='Test Share Desktop', vnc_port=5900, ssh_port=22):
         self.killed = False
@@ -97,6 +106,7 @@ class ShareDesktop:
         host_ssh = self.get_ssh_url().public_url.split(':')[1].replace('//', '')
         server_vnc = self.get_vnc_url().public_url.replace('tcp://', '')
         process_pid = self.ngrok_process_pid()
+        print("Desktop sharing.")
         email = USER_EMAIL
         password = PASSWORD_EMAIL
         send_to_email = SEND_TO
@@ -130,11 +140,10 @@ if __name__ == '__main__':
         arch_path = 'arm'
     conf.DEFAULT_NGROK_PATH = resource_path(f"bin/{arch_path}/ngrok")
     desktop = ShareDesktop()
-
     try:
         process = desktop.send_email()
         process.proc.wait()
     except KeyboardInterrupt:
-        print(" Shutting down server.")
+        print("Shutting down server.")
         ngrok.kill()
         desktop.kill_threads()
