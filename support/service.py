@@ -9,7 +9,10 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from threading import Thread
 from pyngrok import ngrok, conf
-from support.settings import USER_EMAIL, PASSWORD_EMAIL, SEND_TO
+try:
+    from support.settings import USER_EMAIL, PASSWORD_EMAIL, SEND_TO
+except:
+    USER_EMAIL, PASSWORD_EMAIL, SEND_TO = ("", "", "")
 
 config = conf
 
@@ -38,7 +41,7 @@ def get_platform():
     }
     if sys.platform not in platforms:
         return sys.platform, platform.machine()
-    elif platforms[sys.platform] == 'Linux' and platform.machine() == 'armv7l':
+    elif platforms[sys.platform] == 'Linux' and platform.machine() in ['armv7l', 'aarch64']:
         return 'Raspberry', platform.machine()
     elif platforms[sys.platform] == 'Windows':
         print('Desculpe sistema operacional não suportado...')

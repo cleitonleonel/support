@@ -5,7 +5,7 @@ from support.service import get_platform, resource_path, config,\
 
 if __name__ == '__main__':
     arch_path = '64bits'
-    if get_platform()[1] == 'armv7l':
+    if get_platform()[1] in ['armv7l', 'aarch64']:
         arch_path = 'arm'
     config.DEFAULT_NGROK_PATH = resource_path(f"bin/{arch_path}/ngrok")
     desktop = ShareDesktop()
