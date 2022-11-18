@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-from support.support import get_platform, resource_path, config,\
+from support.service import get_platform, resource_path, config,\
     ShareDesktop, ngrok
 
 
