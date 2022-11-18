@@ -19,11 +19,33 @@
 
 **Configure o Gmail para permitir aplicativos de terceiro**
 
-O Gmail atualmente aplica diversas políticas para tentar evitar que um terceiro utilize a sua conta de email inclusive limitando o acesso de aplicativos diferentes do seu próprio webmail. Precisamos permitir o acesso de aplicativos de terceiros, denominado de “menos seguro” pelo Gmail, para poder conectar o nosso cliente de email ao smtp do Gmail.
-- Abra o web browser e entre no endereço: https://myaccount.google.com/lesssecureapps
-- Certifique-se de que está conectado com a conta do Gmail que irá utilizar para configurar o acesso. Caso esteja logado com uma conta diferente alterne para a conta a ser utilizada através do ícone correspondente à letra inicial da conta atual no canto superior direito.
-- Mova o botão para o lado direito para ativar a opção **Permitir aplicativos menos seguros**. O botão ficará com a tonalidade azul.
+- Precisamos habilitar sua conta do Gmail para receber conexões de programas externos.
+- Abra seu navegador e acesse sua conta do Gmail.
+- Em nosso exemplo, a seguinte URL foi inserida no Navegador:
+http://gmail.google.com
 
+- Na tela de login, digite seu nome de usuário e senha do Gmail.
+![](https://github.com/cleitonleonel/support/blob/master/img/g_login.png)
+
+- Após o login, você precisa acessar a seguinte URL:
+- https://myaccount.google.com/signinoptions/two-step-verification
+- Habilite a verificação em duas etapas nesta conta.
+- Depois de habilitar a verificação de duas etapas, você precisa acessar a seguinte URL:
+- https://security.google.com/settings/security/apppasswords
+- Crie uma senha de aplicativo.
+- Selecione o aplicativo gmail e o tipo de dispositivo: Outros.
+![](https://github.com/cleitonleonel/support/blob/master/img/app_pass.png)
+
+- Em nosso exemplo, nós nomeamos o dispositivo POWERSHELL.
+- Clique no botão Gerar e tome nota da senha gerada aleatoriamente.
+![](https://github.com/cleitonleonel/support/blob/master/img/make_pass.png)
+
+- Em seguida, você precisa acessar a seguinte URL:
+- https://accounts.google.com/DisplayUnlockCaptcha
+- Clique no botão Continuar para ativar o acesso externo à sua conta do Google.
+![](https://github.com/cleitonleonel/support/blob/master/img/access.png)
+
+- Você terminou as etapas necessárias para a integração do Gmail.
 
 **Instalando com pip:**
 
