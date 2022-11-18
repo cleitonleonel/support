@@ -16,7 +16,9 @@ except:
 
 config = conf
 
-if len(USER_EMAIL) == 0:
+if len(USER_EMAIL) == 0 \
+        or len(PASSWORD_EMAIL) == 0 \
+        or len(SEND_TO) == 0:
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.py'), 'w') as file_conf:
         USER_EMAIL = input('Digite o seu e-mail: ').lower()
         PASSWORD_EMAIL = input('Digite a senha do e-mail: ')
